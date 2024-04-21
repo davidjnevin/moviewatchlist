@@ -1,0 +1,94 @@
+[project]
+name = "Movie Watch List"
+authors = [{name = "David Nevin", email = "dnevincodes@gmail.com"}]
+readme = "README.md"
+dynamic = ["version", "description"]
+requires-python = ">=3.11"
+dependencies = [
+]
+
+[projecy.urls]
+Home = "https://github.com/davidjnevin/moviewatchlist"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "isort",
+    "autoflake",
+	"pytype; platform_system != 'Windows'",
+    "flake8",
+	"Flake8-pyproject",
+	"bandit",
+	"coverage",
+	"flake8-bugbear",
+	"flake8-cognitive-complexity",
+    "pre-commit",
+	"safety",
+    "pip-audit",
+	"anyio",
+    ]
+
+test = [
+    "pytest",
+    "pytest-cov",
+	"httpx",
+]
+
+
+[tool.isort]
+profile = "black"
+py_version = 39
+skip = [".gitignore", ".dockerignore"]
+extend_skip = [".md", ".json"]
+skip_glob = ["docs/*"]
+
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+include = '\.pyi?$'
+
+[tool.bandit]
+skips = ["B311"]
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: marks tests as integration relatively slow (deselect with '-m \"not integration\"')",
+]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "-ra",
+]
+testpaths = "tests"
+pythonpath = "src"
+
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+# Regexes for lines to exclude from consideration
+exclude_also = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+    ]
+
+ignore_errors = true
+
+# [tool.pytype]
+# inputs = ["src/chatcleaner"]
+#
+[tool.coverage.html]
+directory = "htmlcov"
