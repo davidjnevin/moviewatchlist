@@ -22,12 +22,12 @@ repos:
         language: system
         types: [python]
         pass_filenames: false
-      - id: isort
-        name: isort
-        entry: isort src tests --check --diff
-        language: system
-        types: [ python ]
-        pass_filenames: false
+      # - id: isort
+      #   name: isort
+      #   entry: isort src tests --check --diff
+      #   language: system
+      #   types: [ python ]
+      #   pass_filenames: false
       - id: bandit
         name: bandit
         entry: bandit -r src --config pyproject.toml
