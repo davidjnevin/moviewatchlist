@@ -1,9 +1,17 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
 [project]
-name = "Movie Watch List"
+name = "moviewatchlist"
 authors = [{name = "David Nevin", email = "dnevincodes@gmail.com"}]
 readme = "README.md"
 dynamic = ["version", "description"]
 requires-python = ">=3.11"
+
+[tool.flit.module]
+name = "moviewatchlist"
+
 dependencies = [
 ]
 
@@ -33,7 +41,6 @@ test = [
     "pytest-cov",
 	"httpx",
 ]
-
 
 [tool.isort]
 profile = "black"
@@ -87,8 +94,8 @@ exclude_also = [
 
 ignore_errors = true
 
-# [tool.pytype]
-# inputs = ["src/chatcleaner"]
-#
+[tool.pytype]
+inputs = ["src/moviewatchlist"]
+
 [tool.coverage.html]
 directory = "htmlcov"
